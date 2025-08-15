@@ -8,13 +8,7 @@ on:
     branches:
       - main
   workflow_dispatch:
-- name: Azure Login
-  uses: azure/login@v2
-  with:
-    client-id: ${{ secrets.AZURE_CLIENT_ID }}
-    tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-    subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    auth-type: IDENTITY
+
 
 jobs:
   build:
@@ -74,5 +68,12 @@ jobs:
           app-name: 'foodcourt'
           slot-name: 'Production'
           package: .
-
+- name: Azure Login
+  uses: azure/login@v2
+  with:
+    client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    auth-type: IDENTITY
           
+
